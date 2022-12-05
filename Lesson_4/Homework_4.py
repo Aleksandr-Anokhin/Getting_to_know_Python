@@ -35,4 +35,13 @@ while j * j <= N:
 if N > 1:
     multipliers.append(N)
 print(multipliers)
+
+
+list_num = [1, 1, 2, 2, 3, 3, 4, 1, 5, 7, 8, 8, 7, 9, 9]
+not_repeat = []
+
+for i in list_num:
+    if i not in not_repeat:
+        not_repeat.append(i)
+print(not_repeat)
 '''
