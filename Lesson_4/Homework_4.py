@@ -68,6 +68,6 @@ else:
     polynom_2 = (str())
 print(f'{polynom_1}{polynom_2}')
 
-with open('degree_k.txt', 'w', encoding='utf8') as file:
+with open('g:/Prog/Python/Getting_to_know_Python/Lesson_4/number_k.txt', 'w', encoding='utf8') as file:
     file.write(f'{polynom_1}{polynom_2}')
 
