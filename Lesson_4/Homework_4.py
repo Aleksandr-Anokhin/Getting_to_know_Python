@@ -1,5 +1,5 @@
 # 1. Вычислить число Pi c заданной точностью *d* (d = 0.001)
-'''
+
 from math import fabs  # для вычисления абсолютного значения числа
 from math import pi
 
@@ -51,7 +51,7 @@ print(not_repeat)
 # 4. Задана натуральная степень k. Сформировать случайным образом список коэффициентов 
 # (значения от 0 до 100) многочлена и записать в файл многочлен степени k.
 
-# ариант 1. Был сделан до 5-го урока.
+# Вариант 1. Был сделан до 5-го урока.
 
 import random
 
@@ -90,4 +90,6 @@ print(lst_polynom)
 
 with open('g:/Prog/Python/Getting_to_know_Python/Lesson_4/polynom_k.txt', 'w') as file:
     file.write(f'{lst_polynom}')
-'''
+
+
+
