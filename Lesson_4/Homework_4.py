@@ -46,10 +46,12 @@ for i in list_num:
     if list_num.count(i) == 1:
         not_repeat.append(i)
 print(not_repeat)
-'''
+
 
 # 4. Задана натуральная степень k. Сформировать случайным образом список коэффициентов 
 # (значения от 0 до 100) многочлена и записать в файл многочлен степени k.
+
+# ариант 1. Был сделан до 5-го урока.
 
 import random
 
@@ -71,3 +73,21 @@ print(f'{polynom_1}{polynom_2}')
 with open('g:/Prog/Python/Getting_to_know_Python/Lesson_4/number_k.txt', 'w', encoding='utf8') as file:
     file.write(f'{polynom_1}{polynom_2}')
 
+# Запись в файл и его создание работает только если прописать полный путь к файлу. пробовал писать адрес по разному, ничего не помогло.    
+
+# Вариант 2. Сделан после 5-го урока, когда увидел подсказку и понял, что условие невнимательно прочитал. 
+from random import randint
+
+k = int(input("Введите число k: "))
+a = int(randint(0,100))
+b = int(randint(0,100))
+c = int(randint(0,100))
+lst_polynom = []
+
+for i in range(k, -1, -1):
+    lst_polynom.append(f'{a}x**{i} + {b}x + {c} = 0')
+print(lst_polynom)
+
+with open('g:/Prog/Python/Getting_to_know_Python/Lesson_4/polynom_k.txt', 'w') as file:
+    file.write(f'{lst_polynom}')
+'''
