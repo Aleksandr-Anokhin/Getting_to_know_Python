@@ -41,11 +41,29 @@ def menu():
         print('Пожалуста, введите номер пункта меню')
         enter = input('Нажмите Enter для завершения')
         menu()
-    
+
+def input_firstname():
+    first = input('Имя: ')
+    fi_name = first[1:]
+    firstchar = first[0]
+    return firstchar.upper() + fi_name
+
+def input_lastname():
+    first = input('Фамилия: ')
+    la_name = first[1:]
+    firstchar = first[0]
+    return firstchar.upper() + la_name
+
+def input_patronymic():
+    first = input('Отчество: ')
+    pa_name = first[1:]
+    firstchar = first[0]
+    return firstchar.upper() + pa_name
+
 def new_contact():
-    first_name = input('Имя: ')
-    last_name = input('Фамилия: ')
-    patronymic = input('Отчество: ')
+    first_name = input_firstname()
+    last_name = input_lastname()
+    patronymic = input_patronymic()
     date_of_birth = input('Дата рождения: ')
     phone_number = input('Номер телефона: ')
     mail = input('Эл. почта: ')
@@ -54,7 +72,25 @@ def new_contact():
     myfile.write(contact_details)
     print('Данные успешно сохранены')
 
-#def searchcontact():
+def searchcontact():
+    searchname = input('Введите имя для поиска среди записей: ')
+    se_name = searchname[1:]
+    firstchar = searchname[0]
+    searchname = firstchar.upper() + se_name
+    myfile= open(filename, 'r+')
+    filecontents = myfile.readlines()
+
+    found = False
+    for line in filecontents:
+        if searchname in line:
+            print('Результат поиска: ', end = ' ')
+            print( line)
+            found = True
+            break
+    if found == False:
+        print('Запрашиваемый Вами контакт не найден', searchname) 
+
+
 greeting()
 menu()
 
