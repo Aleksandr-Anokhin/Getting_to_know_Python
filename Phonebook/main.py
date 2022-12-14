@@ -9,38 +9,38 @@ def greeting():
 
 def menu():
     while True:
-        print('\nМЕНЮ')
+        print('МЕНЮ')
         print('1. Добавить новую запись')
         print('2. Вывод записей на экран')
         print('3. Импорт')
         print('4. Экспорт')
         print('5. Поиск')
-        print('6. Выход\n') 
+        print('6. Выход в меню\n') 
         n = input('Выберите пункт меню: ')
 
         if n == '1':
             new_contact()
-            enter = input('Нажмите Enter для завершения')
+            enter = input('Нажмите Enter для выхода в меню ')
             menu()
         elif n == '2':
             myfile = open(filename, 'r+')
             filecontents = myfile.read()
             if len(filecontents) == 0:
-                print('Записей нет')
+                print('Записей нет...')
             else:
                 print(filecontents)
             myfile.close
-            enter = input('Нажмите Enter для завершения')
+            enter = input('Нажмите Enter для выхода в меню ')
             menu()
         elif n == '5':
             searchcontact()
-            enter = input('Нажмите Enter для завершения')
+            enter = input('Нажмите Enter для выхода в меню ')
             menu()
         elif n == '6':
             print('Спасибо за просмотр')
         else:
-            print('Пожалуста, введите номер пункта меню')
-            enter = input('Нажмите Enter для завершения')
+            print('Пожалуста, введите номер пункта меню: ')
+            enter = input('Нажмите Enter для выхода в меню ')
             menu()
 
 def input_firstname():
@@ -55,8 +55,8 @@ def input_lastname():
     firstchar = first[0]
     return firstchar.upper() + la_name
 
-def input_patronymic():
-    first = input('Отчество: ')
+def input_description():
+    first = input('Описание: ')
     pa_name = first[1:]
     firstchar = first[0]
     return firstchar.upper() + pa_name
@@ -64,11 +64,11 @@ def input_patronymic():
 def new_contact():
     first_name = input_firstname()
     last_name = input_lastname()
-    patronymic = input_patronymic()
-    date_of_birth = input('Дата рождения: ')
     phone_number = input('Номер телефона: ')
-    mail = input('Эл. почта: ')
-    contact_details = ('[' + first_name + ' ' + last_name + ' ' + patronymic + '; ' + date_of_birth + '; ' + phone_number + '; ' + mail + ']')
+    description = input_description()
+    
+    
+    contact_details = ('[' + first_name + '; ' + last_name + '; '  + phone_number + '; ' + description + '] ')
     myfile = open(filename, 'a')
     myfile.write(contact_details)
     print('Данные успешно сохранены')
@@ -89,7 +89,7 @@ def searchcontact():
             found = True
             break
     if found == False:
-        print('Запрашиваемый Вами контакт не найден', searchname) 
+        print('Запрашиваемый Вами контакт не найден...', searchname) 
 
 
 greeting()
