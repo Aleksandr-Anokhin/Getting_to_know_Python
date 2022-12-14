@@ -67,8 +67,8 @@ def new_contact():
     phone_number = input('Номер телефона: ')
     description = input_description()
     
-    
-    contact_details = ('[' + first_name + '; ' + last_name + '; '  + phone_number + '; ' + description + '] ')
+    # Строка вывода информации
+    contact_details = ('\n* ' + first_name + ' ' + last_name + ' тел. '  + phone_number + ' Описание: ' + description)
     myfile = open(filename, 'a')
     myfile.write(contact_details)
     print('Данные успешно сохранены')
