@@ -1,8 +1,9 @@
+from export_to_xml import export_to_xml
+from save_to_csv import save_to_csv
+from read_contact import read_contact
 
-filename = 'phonebook.txt'
-myfile = open(filename, 'a+')
-myfile.close
 
+filename = 'phonebook.csv'
 
 def greeting():
     print('<<ТЕЛЕФОННЫЙ СПРАВОЧНИК>>')
@@ -23,15 +24,25 @@ def menu():
             enter = input('Нажмите Enter для выхода в меню ')
             menu()
         elif n == '2':
-            myfile = open(filename, 'r+')
-            filecontents = myfile.read()
-            if len(filecontents) == 0:
-                print('Записей нет...')
-            else:
-                print(filecontents)
-            myfile.close
+            print('Выберите формат отображения данных: 1 - Построчно; 2 - В одну строку', sep = '\n')
+            num = int(input())
+            if num == 1 or num == 2:
+                read_contact(num)
             enter = input('Нажмите Enter для выхода в меню ')
             menu()
+        elif n == '4':
+            print('Выберите формат экспорта данных:', '1 - xml', '2 - json', sep='\n')
+            num_exp = input()
+            if num_exp == '1':
+                export_to_xml()
+                print('Данные успешно экспортированы в формате xml!\n')
+            elif num_exp == '2':
+                export_to_json()
+                print('Данные успешно экспортированы в формате json!\n')
+            else:
+                print('Пожалуста, введите номер пункта меню: ')
+                enter = input('Нажмите Enter для выхода в меню ')
+                menu()    
         elif n == '5':
             searchcontact()
             enter = input('Нажмите Enter для выхода в меню ')
@@ -67,10 +78,8 @@ def new_contact():
     phone_number = input('Номер телефона: ')
     description = input_description()
     
-    # Строка вывода информации
-    contact_details = ('\n* ' + first_name + ' ' + last_name + ' тел. '  + phone_number + ' Описание: ' + description)
-    myfile = open(filename, 'a')
-    myfile.write(contact_details)
+    new_list = [first_name, last_name, phone_number, description]
+    save_to_csv(new_list)
     print('Данные успешно сохранены')
 
 def searchcontact():
@@ -78,7 +87,7 @@ def searchcontact():
     se_name = searchname[1:]
     firstchar = searchname[0]
     searchname = firstchar.upper() + se_name
-    myfile= open(filename, 'r+')
+    myfile = open(filename, 'r+')
     filecontents = myfile.readlines()
 
     found = False
