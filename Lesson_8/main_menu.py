@@ -1,9 +1,12 @@
-from main_teacher import main_teacher
+import os
+os.chdir(os.path.dirname(__file__))
 
-
+from teacher_menu import teacher_menu
+from students_menu import students_menu
+from admin_menu import admin_menu
 
 def greeting():
-    print('<<УЧЕБНЫЙ ПОРТАЛ>>')
+    print('\n<<УЧЕБНЫЙ ПОРТАЛ>>')
 
 def main_menu():
     while True:
@@ -13,13 +16,14 @@ def main_menu():
         n = input('Выберите пункт меню: ')
 
         if n == '1':
-            main_teacher()
+            teacher_menu()
+            
         elif n == '2':
-            #student()
-            print('<<МЕНЮ>>')
-            enter = input('Нажмите Enter для выхода в главное меню ')
-            main_menu()
-
+            students_menu()
+            
         elif n == '0':
-            print('Administrator')
-            #admin()
+            print('\nAdministrator')
+            admin_menu()
+
+greeting()
+main_menu()

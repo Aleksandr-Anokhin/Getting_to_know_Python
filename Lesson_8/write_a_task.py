@@ -1,4 +1,5 @@
-
+import os
+os.chdir(os.path.dirname(__file__))
 
 def write_a_task():
     number = int(input('Введите номер задания: '))
